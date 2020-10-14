@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		String input = s.next();
+		System.out.println(Solution.checkAB(input));
+	}
+
+}
+
+public class solution {
+
+	public static double findGeometricSum(int k){
+		
+        if(k<=0){
+            return 1;
+        }
+        
+        double small=findGeometricSum(k-1);
+        
+        return small+(1/Math.pow(2,k));
+
+	}
+}
