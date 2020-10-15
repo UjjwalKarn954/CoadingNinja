@@ -1,0 +1,47 @@
+public class Solution {
+	public static LinkedListNode<Integer> sortEvenOdd(LinkedListNode<Integer> head) {
+    LinkedListNode<Integer>current=head;
+		LinkedListNode<Integer>evenHead=null;
+		LinkedListNode<Integer>oddHead=null;
+		LinkedListNode<Integer>evenTail=null;
+	    LinkedListNode<Integer>oddTail=null;
+		while(current!=null)
+		{
+			if(current.data%2==0)
+			{
+				if(evenHead==null)
+				{
+					evenHead=evenTail=current;
+                    
+				}
+				else
+				{
+					evenTail.next=current;
+					evenTail=evenTail.next;
+				}
+			}
+			else
+			{
+				if(oddHead==null)
+				{
+					oddHead=oddTail=current;
+                    
+				}
+				else
+				{
+					oddTail.next=current;
+					oddTail=oddTail.next;
+				}
+			}
+			current=current.next;
+		}
+       
+        if(evenHead != null)
+		   evenTail.next=null;
+        if(oddHead != null){
+		 oddTail.next=evenHead;
+            return oddHead;
+        }        
+		return evenHead;
+	}
+}
