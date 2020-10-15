@@ -1,0 +1,17 @@
+public class Solution {
+	
+	public static LinkedListNode<Integer> reverse_R(LinkedListNode<Integer> head) {
+		if(head==null || head.next==null){
+            return head;
+        }
+       LinkedListNode<Integer> smallhead=reverse_R(head.next);
+        LinkedListNode<Integer> tail=smallhead;
+        while(tail.next!=null){
+            tail=tail.next;
+        }
+        tail.next=head;
+        head.next=null;
+        return smallhead;
+        
+	}
+}
