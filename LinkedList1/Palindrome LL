@@ -1,0 +1,66 @@
+public class Solution {
+
+    public static int lengthLL(LinkedListNode<Integer> head)
+    {
+        int len = 0;
+        LinkedListNode<Integer> tail = head;
+        while(tail != null)
+        {
+            len++;
+            tail = tail.next;
+        }
+        return len;
+    }
+
+    public static LinkedListNode reverseLL(LinkedListNode<Integer> head)
+    {
+        if (head == null)
+            return null;
+
+        LinkedListNode<Integer> prev = null;
+        LinkedListNode<Integer> next;
+        LinkedListNode<Integer> current = head;
+
+        while (current != null)
+        {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
+
+    public static boolean  checkPalin(LinkedListNode<Integer> head1, LinkedListNode<Integer> head2)
+    {
+
+
+        LinkedListNode<Integer> runner1 = head1;
+        LinkedListNode<Integer> runner2 = head2;
+
+        while (runner1 != null && runner2 != null)
+        {
+            if (runner1.data != runner2.data)
+                return false;
+
+            runner1 = runner1.next;
+            runner2 = runner2.next;
+        }
+
+        return true;
+    }
+    public static boolean isPalindrome(LinkedListNode<Integer> head) {
+        LinkedListNode<Integer> tail = head;
+        int len = lengthLL(head)/2;
+        for(int i = 0; i < len; i++)
+        {
+            tail = tail.next;
+        }
+        LinkedListNode<Integer> newHead = tail;
+        LinkedListNode<Integer> newLL = reverseLL(newHead);
+        LinkedListNode<Integer> temp = newLL;
+        boolean b = checkPalin(head,temp);
+        return b;
+    }
+}
