@@ -1,0 +1,26 @@
+
+public class Solution {
+	public static int indexOfNRec(LinkedListNode<Integer> head, int n) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+        
+        if(head==null){
+            return -1;
+        }
+        if(head.data==n){
+            return 0;
+        }
+        int count=1;
+        int finaly=indexOfNRec(head.next,n);
+    if(finaly!=-1){
+        return count+finaly;
+    }
+        else {
+            return -1;
+        }
+	}
+}
