@@ -1,0 +1,21 @@
+import java.util.Stack;
+public class Solution {
+
+	public static boolean checkBalanced(String exp) {
+		// Write your code here
+        Stack<Character> charStack=new Stack<>();
+        for(int i=0;i<exp.length();i++){
+            char ch=exp.charAt(i);
+            if(ch=='[' || ch=='{' || ch=='('){
+                charStack.push(ch);
+            }else if((ch==']' || ch=='}' || ch==')') && (!charStack.isEmpty())){
+                if(((char)charStack.peek()=='[' && ch==']') || ((char)charStack.peek()=='{' && ch=='}') || ((char)charStack.peek()=='(' && ch==')')){
+                    charStack.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+        return charStack.isEmpty();
+	}
+}
