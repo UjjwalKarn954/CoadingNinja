@@ -1,0 +1,28 @@
+
+public class Solution {
+
+	public static LinkedListNode<Integer> appendLastNToFirst(LinkedListNode<Integer> head, int n) {
+         LinkedListNode<Integer> newHead=head;
+        int count=0;
+        if(head==null){
+            return head;
+        }
+        while(newHead.next!=null){
+            count++;
+            newHead=newHead.next;
+        }
+      
+        newHead.next=head;
+          int i=count-n;
+        LinkedListNode<Integer> prev=head;
+        while(i>0){
+            prev=prev.next;
+            i--;
+        }
+        LinkedListNode<Integer> headnew=prev.next;
+        prev.next=null;
+        
+    
+        return headnew;
+        
+	}
