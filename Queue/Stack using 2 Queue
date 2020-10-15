@@ -1,0 +1,60 @@
+import java.util.*; 
+import java.util.Queue;
+public class StackUsingQueue<T> 
+{
+	//Implement the class here
+    Queue<T> q1=new LinkedList<>();
+    Queue<T> q2=new LinkedList<>();
+    Queue<T> q;
+    int size;
+    public StackUsingQueue()
+    {
+        size=0;
+    }
+    public void push(T data)
+    {
+       q1.add(data);
+       size++; 
+    }
+    public T pop()
+    {
+       while(q1.size()!=1)
+       {
+          q2.add(q1.poll());   
+       }
+       T temp=q1.remove();
+       size--;
+       q=q1;
+       q1=q2;
+       q2=q;
+       return temp;
+    }
+    public T top()
+    {
+       
+       while(q1.size()!=1)
+       {
+          q2.add(q1.poll());   
+       }
+       T temp=q1.peek();
+       q1.remove();
+       q2.add(temp);
+       q=q1;
+       q1=q2;
+       q2=q;
+       return temp;
+    }
+    public int getSize()
+    {
+      return size;
+    }
+    public 	Queue<T> getQueue()
+    {
+        return q1;
+    }
+    
+    
+}
+
+
+
