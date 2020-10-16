@@ -1,0 +1,60 @@
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		/* Your class should be named Solution
+		* Don't write main().
+		* Don't read input, it is passed as function argument.
+		* Print output and don't return it.
+		* Taking input is handled automatically.
+		*/
+       QueueUsingLL<BinaryTreeNode<Integer>>  q=new QueueUsingLL<>();
+		q.enqueue(root);
+	try{
+	    while(!q.isEmpty())
+		{
+		  BinaryTreeNode<Integer>front=q.dequeue();
+		 
+		       
+		       String s=front.data+"";
+		 
+		       if(front.left!=null)
+		        {
+		            q.enqueue(front.left);
+		            s=s+":L:"+front.left.data;
+		        }
+		       
+		       if(front.left==null)
+		        {  
+		            s=s+":L:-1";
+		        }
+		      
+		        if(front.right!=null)
+		         {
+		             q.enqueue(front.right);
+		             s=s+",R:"+front.right.data;
+		         }
+		         
+		         if(front.right==null){
+		             s=s+",R:-1";
+		         }
+		         
+		       System.out.println(s);   
+		       }
+	    	
+	   }
+	   catch(Exception e){}
+		
+	}
+}
