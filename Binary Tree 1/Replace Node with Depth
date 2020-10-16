@@ -1,0 +1,29 @@
+public class solution {
+    static void replaceDepthK(BinaryTreeNode<Integer> n1,int k){
+        if(n1==null){
+            return;
+        }
+        n1.data=k;
+        replaceDepthK(n1.left,k+1);
+        replaceDepthK(n1.right,k+1);
+    }
+    static void printInorder(BinaryTreeNode<Integer> n1){
+        if(n1==null){
+            return;
+        }
+        printInorder(n1.left);
+        System.out.println(n1.data);
+        printInorder(n1.right);
+    }
+
+	static void replaceDepth(BinaryTreeNode<Integer> n1) {
+		/*Your class should be named solution. 
+		*Don't write main().
+		*Don't take input, it is passed as function argument.
+		*Don't print output.
+		*Taking input and printing output is handled automatically.
+		*/ 
+        replaceDepthK(n1,0);
+        printInorder(n1);
+	}
+}
