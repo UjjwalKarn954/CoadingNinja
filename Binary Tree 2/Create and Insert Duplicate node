@@ -1,0 +1,38 @@
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+	
+	public static void insertDuplicateNode(BinaryTreeNode<Integer> root) {
+		// Write your code here
+        if(root==null){
+            return;
+        }
+        insertDuplicateNode(root.left);
+        insertDuplicateNode(root.right);
+        
+        if(root.left==null){
+            BinaryTreeNode<Integer> newNode=new BinaryTreeNode<Integer>(root.data);
+            root.left=newNode;
+            return;
+        }
+        if(root.left!=null){
+            BinaryTreeNode<Integer> newNode=new BinaryTreeNode<Integer>(root.data);
+            newNode.left=root.left;
+            root.left=newNode;
+            
+            return;
+        }
+		
+	}
+}
