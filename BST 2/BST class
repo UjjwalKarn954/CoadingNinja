@@ -1,0 +1,73 @@
+
+public class BinarySearchTree {
+	// Complete this class
+    BinaryTreeNode<Integer> node=new BinaryTreeNode<Integer>();
+    int size=0;
+    
+    public static void insertData(int x){
+     root=inserthelper(root,x);
+        size++;
+    }
+    public static BinaryTreeNode<Integer> inserthelper(BinaryTreeNode<Integer> root,int x){
+        if(root==null){
+            BinaryTreeNode<Integer> newroot=new BinaryTreeNode<>(x);
+            return newroot;
+        }
+        if(x>=root.data){
+            root.right=inserthelper(root.right,x);
+        }else{
+            root.left=inserthelper(root.left,x);
+        }
+        return root;
+    }
+    public void size(){
+        System.ot.println(size);
+    }
+    
+    public static boolean search(int x){
+        searchhelper(root,x);
+    }
+    public static boolean searchhelper(BinaryTreeNode<Integer> root,int x){
+        if(root==null){
+            return false;
+        }
+        if(root.data==x){
+            return true;
+        }
+        if(x>root.data){
+            return searchhelper(root.right,x);
+        }
+        if(x<root.data){
+            return searchhelper(root.left,x);
+        }
+    }
+    
+    public static void printTree(){
+        printTreehelper(root);
+    }
+    public static void printTreehelper(BinaryTreeNode<Integer> root){
+        if(root==null){
+            return;
+        }
+        System.out.print(root.data+":");
+        if(root.left!=null){
+            System.out.print("L:"+root.left.data+",");
+        }
+        if(root.right!=null){
+            System.out.print("R:"+root.right.data);
+        }
+        System.out.println();
+        printTreehelper(root.left);
+        printTreehelper(root.right);
+        
+    }
+    public static void deleteData(int x){
+        deletehelper(root,x);
+    }
+    public static void deletehelper(BinaryTreeNode<Integer> roor,int x){
+        if(root=null){
+            
+        }
+    }
+	
+}
