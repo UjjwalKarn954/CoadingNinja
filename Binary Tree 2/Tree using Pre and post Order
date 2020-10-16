@@ -1,0 +1,59 @@
+public class Solution {
+
+	/*	Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	 */
+    public static BinaryTreeNode<Integer> helper(int[] pre, int [] in,int sipre,int eipre,int siin,int eiin){
+        if(sipre > eipre){
+            return null;
+        }
+        int rootdata=pre[sipre];
+        BinaryTreeNode<Integer> root=new BinaryTreeNode<Integer>(rootdata);
+        int rootindex=-1;
+        for(int i=siin;i<=eiin;i++){
+            if(in[i]==rootdata){
+                rootindex=i;
+                break;
+            }
+        }
+        if(rootindex==-1){
+            return null;
+        }
+        int sipreleft=sipre+1;
+        int siinleft=siin;
+        int eiinleft=rootindex-1;
+        int siinright=rootindex+1;
+        int eipreright=eipre;
+        int eiinright=eiin;
+        
+        int leftsubtreelenght=eiinleft-siinleft+1;
+        
+         int eipreleft=sipreleft+leftsubtreelenght-1;
+          int sipreright=sipreleft+1;
+        
+        BinaryTreeNode<Integer> left=helper(pre ,in,sipreleft,eipreleft,siinleft,eiinleft);
+        BinaryTreeNode<Integer> right=helper(pre ,in,sipreright,eipreright,siinright,eiinright);
+        root.left=left;
+        root.right=right;
+        return root;
+        
+    }
+
+	public static BinaryTreeNode<Integer> getTreeFromPreorderAndInorder(int[] pre,
+			int[] in){
+		
+			// Write your code here
+        BinaryTreeNode<Integer> root=helper(pre,in,0,pre.length-1,0,in.length-1);
+		return root;
+	}
+
+}
