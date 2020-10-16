@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+
+public class Solution {
+
+	/*	Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	 */
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root){
+		
+		// Write your code here
+
+        QueueUsingLL<BinaryTreeNode<Integer>> pending=new QueueUsingLL<BinaryTreeNode<Integer>>();
+        pending.enqueue(root);
+                
+        System.out.println(root.data);        
+        
+        try{
+        while(!pending.isEmpty()){
+            int size = pending.size();
+            for(int i=0; i<size; i++){
+                 BinaryTreeNode<Integer> front=pending.dequeue();
+             	if(front.left!=null){
+                 	System.out.print(front.left.data+" ");                   
+                 	pending.enqueue(front.left);
+             	}
+            	if(front.right!=null){
+                	System.out.print(front.right.data+" ");                    
+                	pending.enqueue(front.right);
+            	}
+            }           
+           System.out.println();
+        }            
+        } catch(Exception e){            
+        }
+
+	}
+
+
+
+}
